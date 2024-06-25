@@ -55,9 +55,9 @@ You need to install the following tools and configure their dependencies:
 
 1. Clone the repository and navigate into the project directory:
     ```sh
-    git clone https://github.com/alexandrac1420/LOC-Counting_Alexandra-Cortes.git
+    git clone https://github.com/alexandrac1420/CalculadoraWeb.gitgit
 
-    cd countlines
+    cd calculadora
     ```
 
 2. Build the project:
@@ -68,21 +68,52 @@ You need to install the following tools and configure their dependencies:
     Should display output similar to:
     ```sh
     [INFO] --- jar:3.3.0:jar (default-jar) @ countlines ---
-    [INFO] Building jar: C:\Users\alexa\countlines\target\countlines-1.0-SNAPSHOT.jar
+    [INFO] Building jar: C:\Users\alexa\countlines\target\calculadora-1.0-SNAPSHOT.jar
     [INFO] BUILD SUCCESS
     ```
+   
+## How to maintain the result across requests
+In the Calculator application, the  `CalculatorResult` class is implemented as a singleton, which ensures that there is only one instance of CalculatorResult throughout the application. This singleton instance is shared between the `@RequestMapping` and `@PostMapping` methods in the CalculadoraController class, allowing the result to persist across different requests.
 
-3. Run the application:
+
+## Deployment on AWS
+
+Follow these steps to deploy the application on AWS:
+
+1. **Start the virtual machine**
+
+    Launch an EC2 instance with your preferred configuration.
+
+    ![alt text](image.png)
+
+2. **Transfer dependencies and the JAR file**
+
+    Upload the dependencies.zip (containing necessary dependencies) and the built JAR file to the created virtual machine.
+    ![alt text](image-1.png)
+    ![alt text](image-2.png)
+
+3. **Execute the following command**
+
+    Navigate to the directory where you uploaded the files and run:
     ```sh
-    java -cp target/countlines-1.0-SNAPSHOT.jar edu.escuelaing.arsw.ASE.app.CountLines <parameter> <filename/directory>
+     java -cp "./dependency/*:Calculadora-1.0-SNAPSHOT.jar" edu.escuelaing.arsw.Calculadora
     ```
-    For example 
-    ```sh
-    java -cp target/countlines-1.0-SNAPSHOT.jar edu.escuelaing.arsw.ASE.app.CountLines phy src/test/java/edu/escuelaing/arsw/ASE/app/resources
-    ```
+    This will start the Spring service.
 
-    
+4. Start the Spring service
 
+    Ensure the Spring Boot application starts without errors.
+    ![alt text](image-3.png)
+
+5. Verify the deployment
+
+    Check the application's availability using the public DNS of the EC2 instance on port 8080, e.g.,
+    ![alt text](image-5.png)
+    ![alt text](image-4.png)
+
+## Architectural Design
+
+![alt text](arqui.png)
 
 ## Built With
 
