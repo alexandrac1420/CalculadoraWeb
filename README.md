@@ -84,13 +84,13 @@ Follow these steps to deploy the application on AWS:
 
     Launch an EC2 instance with your preferred configuration.
 
-    ![alt text](image.png)
+    ![alt text](https://github.com/alexandrac1420/CalculadoraWeb/blob/master/Pictures/image.png)
 
 2. **Transfer dependencies and the JAR file**
 
     Upload the dependencies.zip (containing necessary dependencies) and the built JAR file to the created virtual machine.
-    ![alt text](image-1.png)
-    ![alt text](image-2.png)
+    ![alt text](https://github.com/alexandrac1420/CalculadoraWeb/blob/master/Pictures/image-1.png)
+    ![alt text](https://github.com/alexandrac1420/CalculadoraWeb/blob/master/Pictures/image-2.png)
 
 3. **Execute the following command**
 
@@ -103,17 +103,41 @@ Follow these steps to deploy the application on AWS:
 4. Start the Spring service
 
     Ensure the Spring Boot application starts without errors.
-    ![alt text](image-3.png)
+    ![alt text](https://github.com/alexandrac1420/CalculadoraWeb/blob/master/Pictures/image-3.png)
 
 5. Verify the deployment
 
     Check the application's availability using the public DNS of the EC2 instance on port 8080, e.g.,
-    ![alt text](image-5.png)
-    ![alt text](image-4.png)
+    ![alt text](https://github.com/alexandrac1420/CalculadoraWeb/blob/master/Pictures/image-5.png)
+    ![alt text](https://github.com/alexandrac1420/CalculadoraWeb/blob/master/Pictures/image-4.png)
 
 ## Architectural Design
 
-![alt text](arqui.png)
+![alt text](https://github.com/alexandrac1420/CalculadoraWeb/blob/master/Pictures/arqui.png)
+The architecture depicted and described involves a web application deployed on an AWS EC2 instance using the Spring framework.
+1. User Access:
+
+    - The user accesses the application through the public URL of the EC2 instance.
+    - The user's browser makes an HTTP request to the server listening on port 8080.
+      
+2. Spring's DispatcherServlet:
+
+    - The request arrives at Spring's `DispatcherServlet`.
+    - The `DispatcherServlet` is responsible for receiving all incoming requests and delegating them to the appropriate controller based on URL mapping.
+      
+3. Controller:
+
+    - The `DispatcherServlet` routes the request to the `CalculadoraController`.
+    - The `CalculadoraController` processes the request and uses the `CalculatorService` to perform
+   the mathematical operation.
+    - The result is sent to the view and displayed to the user.
+  
+4. Additional Classes:
+    - The controller uses additional classes such as `CalculatorResult`.
+      
+5. Deployment:
+
+    - The application is deployed on an AWS EC2 instance.
 
 ## Built With
 
